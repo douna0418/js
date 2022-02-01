@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./all.css">
+
+    <style>
+        body {
+            position: relative;
+        }
+        
+        #c1 {
+            display: block;
+            margin: 0 auto;
+        }
+        
+        #c2 {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="c1" width="300" height="500"></canvas>
+    <canvas id="c2" width="300" height="500"></canvas>
+</body>
+<script>
+    var canvaBack = document.getElementById("c1");
+    var canvaFront = document.getElementById("c2");
+
+    var content = canvaBack.getContext("2d");
+    var cover = canvaFront.getContext("2d");
+
+    var contentImg = new Image();
+    contentImg.src = "./content1.jpg";
+
+    var coverImg = new Image();
+    coverImg.src = "./cover1.jpg";
+
+    contentImg.onload = function() {
+        content.drawImage(this, 0, 0, 300, 500);
+    }
+    coverImg.onload = function() {
+        cover.drawImage(this, 0, 0, 300, 500);
+    }
+
+    canvaFront.onmousedown = function(ev) {
+            canvaFront.onmousemove = function(e) { //監聽canvas的onmousemove事件（即鼠標移動事件）
+                console.log(e);
+                var w = 50; // 清除區域的寬度
+                var h = 50; // 清除區域的高度
+                var x = e.pageX - c1.offsetLeft - w / 2; // 清除區域的x位置
+                var y = e.pageY - c1.offsetTop - h / 2; // 清除區域的y位置
+                cover.clearRect(x, y, w, h);
+            }
+        }
+        // 監聽鼠標的onmouseup事件（即鼠標鬆開事件）
+    canvaFront.onmouseup = function(ev) {
+        // 取消onmousemove事件
+        canvaFront.onmousemove = null;
+    }
+</script>
+
+</html>
