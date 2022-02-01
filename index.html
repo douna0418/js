@@ -20,12 +20,14 @@
             display: block;
             margin: 0 auto;
             width: 100%;
+            max-width: 400px;
         }
         
         #c2 {
             position: absolute;
             display: block;
             width: 100%;
+            max-width: 400px;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
@@ -57,7 +59,7 @@
 
     contentImg.onload = function() {
         content.drawImage(this, 0, 0, 400, 400);
-        content.font = "900 20px Arial";
+        content.font = "900 17px Arial";
         content.textAlign = "center";
         content.fillStyle = "#8b0000";
 
@@ -65,17 +67,17 @@
 
         for (var i = 0; i < bible[num].經文.length; i++) {
             // console.log(bible[1].經文[i]);
-            content.fillText(bible[num].經文[i], 250, 160 + 22 * i, 500);
+            content.fillText(bible[num].經文[i], 200, 110 + 20 * i, 400);
         };
         // console.log(bible[0].經文);
 
-        content.font = "700 18px Arial";
+        content.font = "700 16px Arial";
         content.fillStyle = "black";
         content.textAlign = "left";
         // console.log(bible[0].天父的話.length)
         for (var j = 0; j < bible[num].天父的話.length; j++) {
             // console.log(bible[1].天父的話[j]);
-            content.fillText(bible[num].天父的話[j], 55, 250 + 20 * j, 400);
+            content.fillText(bible[num].天父的話[j], 35, 185 + 20 * j, 350);
         };
     };
 
@@ -104,8 +106,8 @@
     canvaFront.ontouchstart = function(ev) {
         canvaFront.ontouchmove = function(e) {
             // console.log(e);
-            var w = 80; // 清除區域的寬度
-            var h = 80; // 清除區域的高度
+            var w = 50; // 清除區域的寬度
+            var h = 50; // 清除區域的高度
             var x = e.pageX - canvaBack.offsetLeft - w / 2; // 清除區域的x位置
             var y = e.pageY - canvaBack.offsetTop - h / 2; // 清除區域的y位置
             cover.clearRect(x, y, w, h);
