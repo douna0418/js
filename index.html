@@ -104,9 +104,9 @@
     //手機觸控監聽
     canvaFront.ontouchstart = function(ev) {
         canvaFront.ontouchmove = function(e) {
-            console.log(e);
-            var w = 25; // 清除區域的寬度
-            var h = 25; // 清除區域的高度
+            //console.log(e);
+            var w = 50; // 清除區域的寬度
+            var h = 50; // 清除區域的高度
             var x = e.pageX - canvaBack.offsetLeft - w / 2; // 清除區域的x位置
             var y = e.pageY - canvaBack.offsetTop - h / 2; // 清除區域的y位置
             cover.clearRect(x, y, w, h);
